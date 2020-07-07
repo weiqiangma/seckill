@@ -65,4 +65,11 @@ public interface SkUserDao {
      */
     int deleteById(Object id);
 
+    /**
+     * 根据条件查询用户
+     * @param user
+     * @return
+     */
+    List<SkUser> getUserByNameAndPassWord(SkUser user);
+
 }

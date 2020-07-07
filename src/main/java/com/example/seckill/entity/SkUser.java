@@ -14,7 +14,7 @@ public class SkUser implements Serializable {
     /**
     * 用户id
     */
-    private Object id;
+    private Integer id;
     /**
     * 昵称
     */
@@ -45,11 +45,11 @@ public class SkUser implements Serializable {
     private Integer loginCount;
 
 
-    public Object getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

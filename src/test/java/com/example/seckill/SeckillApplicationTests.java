@@ -18,15 +18,17 @@ class SeckillApplicationTests {
 
     @Test
     void contextLoads() {
-        SkUser user = new SkUser();
-        user.setNickname("kobe");
-        user.setLoginCount(5);
-        user.setPassword("mawkun123456");
-        user.setSalt("salt");
-        redisTemplate.opsForValue().set("name", user);
-        redisTemplate.expire("name",60, TimeUnit.SECONDS);
-        System.err.println("-------------------");
-        System.out.println(redisTemplate.opsForValue().get("name"));
+//        SkUser user = new SkUser();
+//        user.setNickname("kobe");
+//        user.setLoginCount(5);
+//        user.setPassword("mawkun123456");
+//        user.setSalt("salt");
+//        redisTemplate.opsForValue().set("name", user);
+//        redisTemplate.expire("name",60, TimeUnit.SECONDS);
+//        System.err.println("-------------------");
+//        System.out.println(redisTemplate.opsForValue().get("name"));
+        Object obj = redisTemplate.opsForValue().get("1allen");
+        System.out.println(redisTemplate.opsForValue().get("1allen"));
     }
 
 }

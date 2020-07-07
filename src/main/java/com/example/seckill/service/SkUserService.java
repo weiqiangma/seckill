@@ -1,6 +1,8 @@
 package com.example.seckill.service;
 
 import com.example.seckill.entity.SkUser;
+import com.example.seckill.utils.BaseResult;
+
 import java.util.List;
 
 /**
@@ -51,5 +53,12 @@ public interface SkUserService {
      * @return 是否成功
      */
     boolean deleteById(Object id);
+
+    /**
+     * 根据条件查询用户
+     * @param user
+     * @return
+     */
+    BaseResult login(SkUser user);
 
 }

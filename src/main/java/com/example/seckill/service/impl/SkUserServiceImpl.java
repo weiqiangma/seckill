@@ -2,11 +2,16 @@ package com.example.seckill.service.impl;
 
 import com.example.seckill.entity.SkUser;
 import com.example.seckill.dao.SkUserDao;
+import com.example.seckill.model.UserSession;
 import com.example.seckill.service.SkUserService;
+import com.example.seckill.utils.BaseResult;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 /**
  * (SkUser)表服务实现类
@@ -18,6 +23,8 @@ import java.util.List;
 public class SkUserServiceImpl implements SkUserService {
     @Resource
     private SkUserDao skUserDao;
+    @Resource
+    private RedisTemplate redisTemplate;
 
     /**
      * 通过ID查询单条数据
@@ -75,5 +82,29 @@ public class SkUserServiceImpl implements SkUserService {
     @Override
     public boolean deleteById(Object id) {
         return this.skUserDao.deleteById(id) > 0;
+    }
+
+    /**
+     * 根据条件查询用户
+     * @param user
+     * @return
+     */
+    @Override
+    public BaseResult login(SkUser user) {
+        List<SkUser> list = skUserDao.getUserByNameAndPassWord(user);
+        if(list.size() > 0 ) {
+            UserSession session = new UserSession();
+            Integer id = list.get(0).getId();
+            String name = list.get(0).getNickname();
+            String password = list.get(0).getPassword();
+            String token = id.toString() + name;
+            session.setUserId(id);
+            session.setUserName(name);
+            session.setPassword(password);
+            session.setTokne(token);
+            redisTemplate.opsForValue().set(token, session,5, TimeUnit.MINUTES);
+            return new BaseResult(list);
+        }
+        return BaseResult.erro("用户名或密码错误");
     }
 }

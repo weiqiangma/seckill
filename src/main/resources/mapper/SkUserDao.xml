@@ -102,4 +102,17 @@
         delete from seckill.sk_user where id = #{id}
     </delete>
 
+    <!--根据用户名密码查询用户 -->
+    <select id="getUserByNameAndPassWord" parameterType="java.lang.String" resultType="com.example.seckill.entity.SkUser">
+        select * from sk_user
+        <where>
+            <if test="nickname != null">
+                and nickname = #{nickname}
+            </if>
+            <if test="password != null">
+                and password = #{password}
+            </if>
+        </where>
+    </select>
+
 </mapper>
