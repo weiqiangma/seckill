@@ -3,6 +3,8 @@ package com.example.seckill.dao;
 import com.example.seckill.entity.SkGoodsSeckill;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 /**
@@ -11,6 +13,7 @@ import java.util.List;
  * @author makejava
  * @since 2020-06-24 09:15:03
  */
+@Repository
 public interface SkGoodsSeckillDao {
 
     /**

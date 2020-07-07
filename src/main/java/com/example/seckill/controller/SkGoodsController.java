@@ -5,6 +5,7 @@ import com.example.seckill.service.SkGoodsService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (SkGoods)表控制层
@@ -20,6 +21,21 @@ public class SkGoodsController {
      */
     @Resource
     private SkGoodsService skGoodsService;
+
+    /**
+     * 获取商品列表
+     * @param goods
+     * @return
+     */
+    @RequestMapping("list")
+    public List<SkGoods> list(SkGoods goods) {
+        return this.skGoodsService.list(goods);
+    }
+
+    @RequestMapping("test")
+    public String test(SkGoods goods) {
+        return "hello";
+    }
 
     /**
      * 通过主键查询单条数据

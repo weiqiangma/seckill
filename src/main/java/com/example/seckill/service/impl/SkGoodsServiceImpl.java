@@ -19,6 +19,11 @@ public class SkGoodsServiceImpl implements SkGoodsService {
     @Resource
     private SkGoodsDao skGoodsDao;
 
+    @Override
+    public List<SkGoods> list(SkGoods goods) {
+        return skGoodsDao.queryAll(goods);
+    }
+
     /**
      * 通过ID查询单条数据
      *

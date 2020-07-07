@@ -12,6 +12,13 @@ import java.util.List;
 public interface SkGoodsService {
 
     /**
+     * 查询所有商品
+     * @param goods
+     * @return
+     */
+    List<SkGoods> list(SkGoods goods);
+
+    /**
      * 通过ID查询单条数据
      *
      * @param id 主键
