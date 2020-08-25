@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * 拦截器拦截请求获取用户信息存放request里，后续参数解析器会从request中获取用户信息放在注解上
  * @Date 2020/7/7 14:03
  * @Author mawkun
  */

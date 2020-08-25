@@ -25,12 +25,20 @@ public class WebMvnConfig extends WebMvcConfigurationSupport {
         return new AuthenticationInterceptor();
     }
 
+    /**
+     * 注册参数解析器
+     * @param argumentResolvers
+     */
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         log.info("mvc参数解析器");
         argumentResolvers.add(new LoginArgumentResolver<UserSession>());
     }
 
+    /**
+     * 注册拦截器
+     * @param registry
+     */
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginRequiredInterceptor())

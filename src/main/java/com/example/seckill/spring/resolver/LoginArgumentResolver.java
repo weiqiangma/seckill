@@ -25,6 +25,11 @@ public class LoginArgumentResolver<T extends UserSession> implements HandlerMeth
     @Autowired
     RedisTemplate redisTemplate;
 
+    /**
+     * 判断是否需要解析的参数类型
+     * @param parameter
+     * @return
+     */
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         log.info("---------------开始参数解析");
@@ -41,6 +46,15 @@ public class LoginArgumentResolver<T extends UserSession> implements HandlerMeth
         return false;
     }
 
+    /**
+     * 真正的解析方法
+     * @param parameter
+     * @param modelAndViewContainer
+     * @param nativeWebRequest
+     * @param webDataBinderFactory
+     * @return
+     * @throws Exception
+     */
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer modelAndViewContainer, NativeWebRequest nativeWebRequest, WebDataBinderFactory webDataBinderFactory) throws Exception {
         log.info("---------------参数解析中");
